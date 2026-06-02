@@ -1,3 +1,9 @@
+/* ==========================================
+   Project: Rotating Glowing Earth Animation
+   Developed by: Md. Emtiaz Hossain Sami 
+   Department of Software Engineering, DIU @2026
+   ========================================== */
+
 /* Reset and Base Layout */
 * {
   margin: 0;
@@ -37,14 +43,14 @@ body, html {
   z-index: 10;
 }
 
-/* ☀️ 2nd Pic-এর মতো উজ্জ্বল গোল্ডেন-অরেঞ্জ সূর্যের আলো */
+/* ☀️ ২য় পিকচারের মতো উজ্জ্বল গোল্ডেন-অরেঞ্জ ব্যাকগ্রাউন্ড সূর্যের আলো */
 .sun-glow {
   position: absolute;
   width: 450px;
   height: 450px;
-  top: 8%;  /* ছবির পজিশন অনুযায়ী পারফেক্টলি সেট */
+  top: 8%;  
   left: 15%;
-  /* ব্রাইটনেস এবং ছটা বাড়ানোর জন্য গ্রেডিয়েন্ট অপাসিটি বাড়ানো হয়েছে */
+  /* ব্রাইটনেস বাড়ানোর জন্য গ্রেডিয়েন্ট অপাসিটি বুস্ট করা হয়েছে */
   background: radial-gradient(circle, rgba(255, 155, 100, 0.35) 0%, rgba(235, 148, 107, 0.1) 45%, rgba(0, 0, 0, 0) 70%);
   filter: blur(35px);
   pointer-events: none;
@@ -89,16 +95,18 @@ body, html {
   z-index: 3;
 }
 
-/* Moving Map Layer (১০০% ফিক্সড লোকাল রিলেটিভ পাথ) */
+/* 🗺️ Moving Map Layer (উইকিপিডিয়ার গ্যারান্টিড গ্লোবাল ম্যাপ সোর্স) */
 .map-texture {
   position: absolute;
   width: 200%;
   height: 100%;
-  background-image: url('world-map-outline.png'); /* লোকাল ফাইল পাথ */
+  /* এই ওপেন-সোর্স ম্যাপের ব্যাকগ্রাউন্ড স্বচ্ছ, ফলে ভেতরের আলো নিখুঁত রিফ্লেক্ট করবে */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/World_map_blank_black_white.svg/1024px-World_map_blank_black_white.svg.png');
   background-size: 50% 100%;
   background-repeat: repeat-x;
   opacity: 0.75;
-  filter: drop-shadow(0 0 3px rgba(82, 187, 204, 0.85)) brightness(1.3);
+  /* কালো আউটলাইন ম্যাপটিকে ইনভার্ট করে সায়ান-গ্লোয়িং লাইনে কনভার্ট করার বিশেষ ফিল্টার */
+  filter: invert(1) drop-shadow(0 0 3px rgba(82, 187, 204, 0.9)) brightness(1.4) hue-rotate(140deg);
   animation: rotateEarth 20s linear infinite;
 }
 
@@ -111,7 +119,7 @@ body, html {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  /* টপ-লেফট থেকে সূর্যের আলোর রিফ্লেকশন ও ডান পাশে ৩D শ্যাডো */
+  /* বাম পাশের সূর্যের আলোর রিফ্লেকশন এবং ডান ও নিচের ডার্ক ৩D শ্যাডো মাস্ক */
   background: radial-gradient(circle at 30% 30%, rgba(255, 230, 200, 0.15) 0%, transparent 45%, rgba(5, 12, 20, 0.6) 70%, rgba(3, 6, 10, 0.95) 100%);
   z-index: 5;
   pointer-events: none;
