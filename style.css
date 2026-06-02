@@ -1,0 +1,126 @@
+/* Reset and Base Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0b131a; /* Dark space background color matching the pic */
+}
+
+/* Space Container holding everything */
+.space-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, #0d1e2d 0%, #060b11 100%);
+}
+
+/* Top Headline Typography */
+.title {
+  position: absolute;
+  top: 40px;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+  z-index: 10;
+}
+
+/* Background Soft Orange/Sun Aura Glow (Top-left back of Earth) */
+.sun-glow {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  top: 15%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(235, 148, 107, 0.15) 0%, rgba(235, 148, 107, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Earth Wrapper Positioning */
+.earth-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Outer Cyan/Blue Atmosphere Glow Layer */
+.earth-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* Pic er moto subtle cyan glowing aura shadow */
+  box-shadow: 0 0 60px 20px rgba(82, 187, 204, 0.35),
+              inset 0 0 50px 10px rgba(82, 187, 204, 0.4);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Globe Sphere Design */
+.globe {
+  position: relative;
+  width: 396px;
+  height: 396px;
+  border-radius: 50%;
+  background-color: #05101a;
+  overflow: hidden;
+  box-shadow: inset -30px -30px 80px rgba(0, 0, 0, 0.9),
+              inset 20px 20px 70px rgba(82, 187, 204, 0.4);
+  border: 1px solid rgba(82, 187, 204, 0.2);
+  z-index: 3;
+}
+
+/* Moving Map Layer (SVG outline map texture repeated horizontally) */
+.map-texture {
+  position: absolute;
+  width: 200%; /* Texture repeat support korar jonno double width */
+  height: 100%;
+  background-image: url('https://i.ibb.co/6wX0m0L/world-map-outline.png'); /* Accurate high-quality transparent vector outline map */
+  background-size: 50% 100%; /* Perfectly matches the width seamless loop */
+  background-repeat: repeat-x;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 3px rgba(82, 187, 204, 0.8)); /* Glow effect on the borders */
+  animation: rotateEarth 20s linear infinite; /* Smooth continuous rotation */
+}
+
+/* Sphere Shading Mask Overlay (Creates 3D depth, light from top-left) */
+.globe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, transparent 40%, rgba(5, 12, 20, 0.7) 70%, rgba(3, 6, 10, 0.95) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* CSS Keyframe Animation for Infinite Rotation */
+@keyframes rotateEarth {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Shifts left seamlessly to loop map outline */
+  }
+}
