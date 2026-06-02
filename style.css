@@ -37,15 +37,16 @@ body, html {
   z-index: 10;
 }
 
-/* Background Soft Orange/Sun Aura Glow (Top-left back of Earth) */
+/* ☀️ 2nd Pic-এর মতো উজ্জ্বল গোল্ডেন-অরেঞ্জ সূর্যের আলো */
 .sun-glow {
   position: absolute;
-  width: 350px;
-  height: 350px;
-  top: 15%;
-  left: 20%;
-  background: radial-gradient(circle, rgba(235, 148, 107, 0.18) 0%, rgba(235, 148, 107, 0) 70%);
-  filter: blur(40px);
+  width: 450px;
+  height: 450px;
+  top: 8%;  /* ছবির পজিশন অনুযায়ী পারফেক্টলি সেট */
+  left: 15%;
+  /* ব্রাইটনেস এবং ছটা বাড়ানোর জন্য গ্রেডিয়েন্ট অপাসিটি বাড়ানো হয়েছে */
+  background: radial-gradient(circle, rgba(255, 155, 100, 0.35) 0%, rgba(235, 148, 107, 0.1) 45%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(35px);
   pointer-events: none;
   z-index: 1;
 }
@@ -82,32 +83,23 @@ body, html {
   border-radius: 50%;
   background-color: #05101a;
   overflow: hidden;
-  /* ভেতরের লাইট ইফেক্ট যা আপনার আগের কোডে ব্লক হয়ে গিয়েছিল */
   box-shadow: inset -30px -30px 80px rgba(0, 0, 0, 0.9),
               inset 20px 20px 70px rgba(82, 187, 204, 0.5);
   border: 1px solid rgba(82, 187, 204, 0.25);
   z-index: 3;
 }
 
-/* Moving Map Layer (গিটহাবের স্থায়ী ডিরেক্টরি থেকে ১০০% ট্রান্সপারেন্ট ম্যাপ) */
+/* Moving Map Layer (১০০% ফিক্সড লোকাল রিলেটিভ পাথ) */
 .map-texture {
   position: absolute;
   width: 200%;
   height: 100%;
-  /* এই ম্যাপের ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট, তাই ভেতরের আলো বাইরে নিখুঁতভাবে ফুটে উঠবে */
-  background-image: url('https://raw.githubusercontent.com/sami21-lgtm/Rotating-Glowing-Earth-/main/world-map-outline.png');
+  background-image: url('world-map-outline.png'); /* লোকাল ফাইল পাথ */
   background-size: 50% 100%;
   background-repeat: repeat-x;
-  opacity: 0.65;
-  filter: drop-shadow(0 0 2px rgba(82, 187, 204, 0.6)) brightness(1.2);
+  opacity: 0.75;
+  filter: drop-shadow(0 0 3px rgba(82, 187, 204, 0.85)) brightness(1.3);
   animation: rotateEarth 20s linear infinite;
-}
-
-/* Fallback ম্যাপ লিংক (যদি কোনো কারণে উপরের লিংক লোড না হয় তবে এটি ব্যাকআপ হিসেবে কাজ করবে) */
-@css {
-  .map-texture:empty {
-    background-image: url('https://cdn.jsdelivr.net/gh/sami21-lgtm/Rotating-Glowing-Earth-/world-map-outline.png');
-  }
 }
 
 /* Sphere Shading Mask Overlay (Creates 3D depth, light from top-left) */
@@ -119,7 +111,8 @@ body, html {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, transparent 35%, rgba(5, 12, 20, 0.6) 65%, rgba(3, 6, 10, 0.95) 100%);
+  /* টপ-লেফট থেকে সূর্যের আলোর রিফ্লেকশন ও ডান পাশে ৩D শ্যাডো */
+  background: radial-gradient(circle at 30% 30%, rgba(255, 230, 200, 0.15) 0%, transparent 45%, rgba(5, 12, 20, 0.6) 70%, rgba(3, 6, 10, 0.95) 100%);
   z-index: 5;
   pointer-events: none;
 }
