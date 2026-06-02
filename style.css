@@ -44,7 +44,7 @@ body, html {
   height: 350px;
   top: 15%;
   left: 20%;
-  background: radial-gradient(circle, rgba(235, 148, 107, 0.15) 0%, rgba(235, 148, 107, 0) 70%);
+  background: radial-gradient(circle, rgba(235, 148, 107, 0.3) 0%, rgba(235, 148, 107, 0) 70%);
   filter: blur(40px);
   pointer-events: none;
   z-index: 1;
