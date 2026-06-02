@@ -1,8 +1,4 @@
-/* ==========================================
-   Project: Rotating Glowing Earth Animation
-   Developed by: Md. Emtiaz Hossain Sami 
-   Department of Software Engineering, DIU @2026
-   ========================================== */
+/* Project developed by Md. Emtiaz Hossain Sami 2026 */
 
 /* Reset and Base Layout */
 * {
@@ -16,10 +12,10 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #0b131a;
+  background-color: #091016; /* ২য় পিকের মতো একদম ডিপ এবং ডার্ক ব্যাকগ্রাউন্ড */
 }
 
-/* Space Container holding everything */
+/* Space Container */
 .space-container {
   position: relative;
   width: 100%;
@@ -28,7 +24,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 50%, #0d1e2d 0%, #060b11 100%);
+  background: radial-gradient(circle at 50% 50%, #0d1e2d 0%, #050a0f 100%);
 }
 
 /* Top Headline Typography */
@@ -43,24 +39,24 @@ body, html {
   z-index: 10;
 }
 
-/* ☀️ ব্যাকগ্রাউন্ডের উজ্জ্বল গোল্ডেন-অরেঞ্জ সূর্যের আলো */
+/* ☀️ ২য় পিকের মতো নরম ও হালকা সূর্যের আলো (Soft Peach/Orange Light) */
 .sun-glow {
   position: absolute;
-  width: 450px;
-  height: 450px;
-  top: 8%;  
-  left: 15%;
-  background: radial-gradient(circle, rgba(255, 155, 100, 0.35) 0%, rgba(235, 148, 107, 0.1) 45%, rgba(0, 0, 0, 0) 70%);
+  width: 280px;  /* সাইজ পারফেক্ট করা হলো */
+  height: 280px;
+  top: 15%;  
+  left: 18%;
+  background: radial-gradient(circle, rgba(255, 180, 130, 0.4) 0%, rgba(255, 140, 100, 0.15) 45%, transparent 70%);
   filter: blur(35px);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Earth Wrapper Positioning */
+/* Earth Wrapper */
 .earth-wrapper {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 360px; /* গ্লোবের সাইজ ২য় পিকের প্রপোরশন অনুযায়ী সেট করা হলো */
+  height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,8 +70,9 @@ body, html {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: 0 0 60px 20px rgba(82, 187, 204, 0.35),
-              inset 0 0 50px 10px rgba(82, 187, 204, 0.4);
+  /* ২য় পিকের মতো স্মুথ সায়ান গ্লো */
+  box-shadow: 0 0 45px 5px rgba(82, 187, 204, 0.35),
+              inset 0 0 40px 8px rgba(82, 187, 204, 0.5);
   pointer-events: none;
   z-index: 4;
 }
@@ -83,32 +80,34 @@ body, html {
 /* Globe Sphere Design */
 .globe {
   position: relative;
-  width: 396px;
-  height: 396px;
+  width: 356px;
+  height: 356px;
   border-radius: 50%;
-  background-color: #05101a;
+  background-color: #03080d;
   overflow: hidden;
-  box-shadow: inset -30px -30px 80px rgba(0, 0, 0, 0.9),
-              inset 20px 20px 70px rgba(82, 187, 204, 0.5);
-  border: 1px solid rgba(82, 187, 204, 0.25);
+  /* ২য় পিকের মতো ডানদিকে গভীর অন্ধকার, বামে সায়ান রিফ্লেকশন */
+  box-shadow: inset -45px -45px 60px rgba(0, 0, 0, 0.95),
+              inset 20px 20px 50px rgba(82, 187, 204, 0.25);
+  border: 1px solid rgba(82, 187, 204, 0.15);
   z-index: 3;
 }
 
-/* 🗺️ Moving Map Layer (১০০% ইন-লাইন SVG ডাটা - কোনো এক্সটার্নাল ইমেজের ঝামেলা নেই) */
+/* 🗺️ Moving Map Layer */
 .map-texture {
   position: absolute;
   width: 200%;
   height: 100%;
-  /* সরাসরি সিএসএস-এর ভেতরেই স্বচ্ছ পিওর ভেক্টর আউটলাইন ম্যাপের ডাটা এম্বেড করা হলো */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1008 651'%3E%3Cpath fill='none' stroke='rgba(82,187,204,0.8)' stroke-width='1.5' d='M140,180 L150,175 L165,185 L180,180 L200,195 L210,190 L220,210 L240,215 L250,230 L245,250 L260,270 L255,290 L270,300 L265,320 L280,330 L300,325 L320,340 L315,360 L330,380 L350,390 L360,410 L355,430 L370,450 L365,470 L380,490 L395,500 L390,520 L400,540 L415,550 L410,570 L405,590 L415,610 L430,600 L440,580 L435,560 L445,540 L440,520 L450,500 L445,480 L460,460 L455,440 L470,420 L465,400 L480,380 L475,360 L490,340 L510,345 L530,330 L550,340 L570,335 L590,350 L610,345 L630,360 L650,355 L670,370 L690,365 L710,380 L730,375 L750,390 L770,385 L790,400 L810,395 L830,410 L850,405 L870,420 L890,415 L910,430 M150,150 L180,140 L200,155 L220,145 L250,160 L270,150 L300,165 M400,150 L430,135 L450,150 L480,140 L500,155 L530,145 L550,160 M600,180 L630,170 L650,185 L680,175 L700,190 L730,180 L750,195 M140,180 L130,200 L115,210 L100,230 L90,250 L95,270 L80,290 L85,310 L70,330 L60,350 L75,370 L70,390 L85,410 L100,430 L110,450 L130,460 L140,480 L160,490 L170,510 L190,520 L200,540 L220,550 L230,570 L250,580 L270,560 L280,540 L275,520 L290,500 L285,480 L300,460 L295,440 L310,420 L305,400 L320,380 L315,360 M500,250 L520,240 L540,255 L560,245 L580,260 L600,250 L620,265 L640,255 L660,270 L680,260 L700,275 L720,265 L740,280 L760,270 L780,285 L800,275 L820,290 L840,280 L860,295 L880,285 L900,300 M350,220 L380,210 L400,225 L430,215 L450,230 L480,220 L500,235 M200,300 L230,290 L250,305 L280,295 L300,310 L330,300 L350,315'/%3E%3C/svg%3E");
+  /* এখানে আপনার গিটহাবে আপলোড করা আসল ছবিটির নাম দেওয়া হলো */
+  background-image: url('world-map.png');
   background-size: 50% 100%;
   background-repeat: repeat-x;
   opacity: 0.85;
-  filter: drop-shadow(0 0 4px rgba(82, 187, 204, 0.95)) brightness(1.5);
+  /* সাদা/সায়ান আউটলাইনকে উজ্জ্বল করার জন্য ফিল্টার */
+  filter: drop-shadow(0 0 2px rgba(82, 187, 204, 0.8));
   animation: rotateEarth 20s linear infinite;
 }
 
-/* Sphere Shading Mask Overlay (Creates 3D depth, light from top-left) */
+/* Sphere Shading Mask Overlay (Creates 3D depth) */
 .globe::before {
   content: '';
   position: absolute;
@@ -117,7 +116,8 @@ body, html {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 230, 200, 0.15) 0%, transparent 45%, rgba(5, 12, 20, 0.6) 70%, rgba(3, 6, 10, 0.95) 100%);
+  /* টপ-লেফটে সানলাইট রিফ্লেকশন এবং বটম-রাইটে ডার্ক থ্রিডি শ্যাডো */
+  background: radial-gradient(circle at 25% 25%, rgba(255, 230, 200, 0.08) 0%, transparent 45%, rgba(0, 0, 0, 0.85) 75%, #000 100%);
   z-index: 5;
   pointer-events: none;
 }
@@ -146,7 +146,7 @@ body, html {
   text-transform: uppercase;
 }
 
-/* CSS Keyframe Animation for Infinite Rotation */
+/* CSS Animation */
 @keyframes rotateEarth {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
