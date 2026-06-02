@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-  <meta charset = "UTF-8">
-  <meta name ="viewport" content ="width=device-width, inital-scale = 1.0">
-  <title>Rotating Glowing Earth</title>
- <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating Glowing Earth Animation</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body> 
+<body>
 
-  <div class = "space-container">
-    <h1 class = "title">Rotating Glowing Earth Animation using HTML And CSS</h1>
-    <div class = "sun-glow"></div>
+  <div class="space-container">
+    <!-- Top Text Title -->
+    <h1 class="title">Rotating Glowing Earth Animation using HTML And CSS</h1>
+
+    <!-- Sun Light Aura effect in background -->
+    <div class="sun-glow"></div>
+
+    <!-- Main Earth Component -->
     <div class="earth-wrapper">
+      <!-- Outer Atmosphere Cyan Glow -->
       <div class="earth-glow"></div>
       
+      <!-- The actual Globe sphere -->
       <div class="globe">
+        <!-- Moving Map texture -->
         <div class="map-texture"></div>
       </div>
     </div>
+
+    <!-- Custom Credit Footer -->
+    <footer class="project-footer">
+      <p>Developed by <span>Md. Emtiaz Hossain Sami</span></p>
+      <p class="dept">Department of Software Engineering, Daffodil International University @2026</p>
+    </footer>
   </div>
 
   <script src="script.js"></script>
