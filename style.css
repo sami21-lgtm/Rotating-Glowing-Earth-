@@ -12,7 +12,7 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #091016; /* ২য় পিকের মতো একদম ডিপ এবং ডার্ক ব্যাকগ্রাউন্ড */
+  background-color: #091016;
 }
 
 /* Space Container */
@@ -27,7 +27,7 @@ body, html {
   background: radial-gradient(circle at 50% 50%, #0d1e2d 0%, #050a0f 100%);
 }
 
-/* Top Headline Typography */
+/* Top Headline */
 .title {
   position: absolute;
   top: 40px;
@@ -39,10 +39,10 @@ body, html {
   z-index: 10;
 }
 
-/* ☀️ ২য় পিকের মতো নরম ও হালকা সূর্যের আলো (Soft Peach/Orange Light) */
+/* Sun Glow Effect */
 .sun-glow {
   position: absolute;
-  width: 280px;  /* সাইজ পারফেক্ট করা হলো */
+  width: 280px;
   height: 280px;
   top: 15%;  
   left: 18%;
@@ -55,7 +55,7 @@ body, html {
 /* Earth Wrapper */
 .earth-wrapper {
   position: relative;
-  width: 360px; /* গ্লোবের সাইজ ২য় পিকের প্রপোরশন অনুযায়ী সেট করা হলো */
+  width: 360px;
   height: 360px;
   display: flex;
   align-items: center;
@@ -64,20 +64,19 @@ body, html {
   margin-bottom: 40px;
 }
 
-/* Outer Cyan/Blue Atmosphere Glow Layer */
+/* Earth Atmosphere Glow */
 .earth-glow {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  /* ২য় পিকের মতো স্মুথ সায়ান গ্লো */
   box-shadow: 0 0 45px 5px rgba(82, 187, 204, 0.35),
               inset 0 0 40px 8px rgba(82, 187, 204, 0.5);
   pointer-events: none;
   z-index: 4;
 }
 
-/* Globe Sphere Design */
+/* Globe Sphere */
 .globe {
   position: relative;
   width: 356px;
@@ -85,29 +84,26 @@ body, html {
   border-radius: 50%;
   background-color: #03080d;
   overflow: hidden;
-  /* ২য় পিকের মতো ডানদিকে গভীর অন্ধকার, বামে সায়ান রিফ্লেকশন */
   box-shadow: inset -45px -45px 60px rgba(0, 0, 0, 0.95),
               inset 20px 20px 50px rgba(82, 187, 204, 0.25);
   border: 1px solid rgba(82, 187, 204, 0.15);
   z-index: 3;
 }
 
-/* 🗺️ Moving Map Layer */
+/* Moving Map Layer */
 .map-texture {
   position: absolute;
   width: 200%;
   height: 100%;
-  /* এখানে আপনার গিটহাবে আপলোড করা আসল ছবিটির নাম দেওয়া হলো */
   background-image: url('image_6e8127bd.png');
   background-size: 50% 100%;
   background-repeat: repeat-x;
   opacity: 0.85;
-  /* সাদা/সায়ান আউটলাইনকে উজ্জ্বল করার জন্য ফিল্টার */
   filter: drop-shadow(0 0 2px rgba(82, 187, 204, 0.8));
   animation: rotateEarth 20s linear infinite;
 }
 
-/* Sphere Shading Mask Overlay (Creates 3D depth) */
+/* Sphere Shading Mask */
 .globe::before {
   content: '';
   position: absolute;
@@ -116,13 +112,12 @@ body, html {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  /* টপ-লেফটে সানলাইট রিফ্লেকশন এবং বটম-রাইটে ডার্ক থ্রিডি শ্যাডো */
   background: radial-gradient(circle at 25% 25%, rgba(255, 230, 200, 0.08) 0%, transparent 45%, rgba(0, 0, 0, 0.85) 75%, #000 100%);
   z-index: 5;
   pointer-events: none;
 }
 
-/* Footer Credits Layout */
+/* Footer */
 .project-footer {
   position: absolute;
   bottom: 25px;
@@ -130,20 +125,10 @@ body, html {
   z-index: 10;
   color: rgba(255, 255, 255, 0.6);
   font-size: 14px;
-  line-height: 1.6;
-  letter-spacing: 0.5px;
 }
 
 .project-footer span {
   color: #52bbcc;
-  font-weight: 600;
-}
-
-.project-footer .dept {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.35);
-  margin-top: 2px;
-  text-transform: uppercase;
 }
 
 /* CSS Animation */
