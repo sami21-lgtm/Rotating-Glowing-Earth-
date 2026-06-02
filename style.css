@@ -1,6 +1,5 @@
 /* Project developed by Md. Emtiaz Hossain Sami 2026 */
 
-/* Reset and Base Layout */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +14,6 @@ body, html {
   background-color: #091016;
 }
 
-/* Space Container */
 .space-container {
   position: relative;
   width: 100%;
@@ -27,32 +25,19 @@ body, html {
   background: radial-gradient(circle at 50% 50%, #0d1e2d 0%, #050a0f 100%);
 }
 
-/* Top Headline */
-.title {
-  position: absolute;
-  top: 40px;
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-align: center;
-  z-index: 10;
-}
-
-/* Sun Glow Effect */
+/* সূর্যালোক (Sun Glow) - গ্লোবের বাম দিকে থাকবে */
 .sun-glow {
   position: absolute;
-  width: 280px;
-  height: 280px;
-  top: 15%;  
-  left: 18%;
-  background: radial-gradient(circle, rgba(255, 180, 130, 0.4) 0%, rgba(255, 140, 100, 0.15) 45%, transparent 70%);
-  filter: blur(35px);
+  width: 300px;
+  height: 300px;
+  top: 15%;
+  left: 15%;
+  background: radial-gradient(circle, rgba(255, 160, 100, 0.3) 0%, transparent 70%);
+  filter: blur(50px);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Earth Wrapper */
 .earth-wrapper {
   position: relative;
   width: 360px;
@@ -61,36 +46,32 @@ body, html {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  margin-bottom: 40px;
 }
 
-/* Earth Atmosphere Glow */
+/* গ্লোবের বাইরের নীল রঙের আভা */
 .earth-glow {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: 0 0 45px 5px rgba(82, 187, 204, 0.35),
-              inset 0 0 40px 8px rgba(82, 187, 204, 0.5);
+  box-shadow: 0 0 50px 10px rgba(82, 187, 204, 0.4);
   pointer-events: none;
   z-index: 4;
 }
 
-/* Globe Sphere */
+/* মূল গ্লোব - কোনো শ্যাডো বা দাগ নেই */
 .globe {
   position: relative;
   width: 356px;
   height: 356px;
   border-radius: 50%;
-  background-color: #03080d;
+  background-color: transparent;
   overflow: hidden;
-  box-shadow: inset -45px -45px 60px rgba(0, 0, 0, 0.95),
-              inset 20px 20px 50px rgba(82, 187, 204, 0.25);
-  border: 1px solid rgba(82, 187, 204, 0.15);
+  border: 1px solid rgba(82, 187, 204, 0.2);
   z-index: 3;
 }
 
-/* Moving Map Layer */
+/* ম্যাপ মুভিং অ্যানিমেশন */
 .map-texture {
   position: absolute;
   width: 200%;
@@ -98,40 +79,16 @@ body, html {
   background-image: url('image_6e8127bd.png');
   background-size: 50% 100%;
   background-repeat: repeat-x;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 2px rgba(82, 187, 204, 0.8));
+  opacity: 0.95;
+  filter: drop-shadow(0 0 3px rgba(82, 187, 204, 0.9));
   animation: rotateEarth 20s linear infinite;
 }
 
-/* Sphere Shading Mask */
+/* শ্যাডো বা দাগ একদম মুছে ফেলা হয়েছে */
 .globe::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 25% 25%, rgba(255, 230, 200, 0.08) 0%, transparent 45%, rgba(0, 0, 0, 0.85) 75%, #000 100%);
-  z-index: 5;
-  pointer-events: none;
+  content: none;
 }
 
-/* Footer */
-.project-footer {
-  position: absolute;
-  bottom: 25px;
-  text-align: center;
-  z-index: 10;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 14px;
-}
-
-.project-footer span {
-  color: #52bbcc;
-}
-
-/* CSS Animation */
 @keyframes rotateEarth {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
