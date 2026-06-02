@@ -44,7 +44,7 @@ body, html {
   height: 350px;
   top: 15%;
   left: 20%;
-  background: radial-gradient(circle, rgba(235, 148, 107, 0.15) 0%, rgba(235, 148, 107, 0) 70%);
+  background: radial-gradient(circle, rgba(235, 148, 107, 0.18) 0%, rgba(235, 148, 107, 0) 70%);
   filter: blur(40px);
   pointer-events: none;
   z-index: 1;
@@ -59,7 +59,7 @@ body, html {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  margin-bottom: 40px; /* ফুটারের জন্য স্পেস */
+  margin-bottom: 40px;
 }
 
 /* Outer Cyan/Blue Atmosphere Glow Layer */
@@ -82,26 +82,35 @@ body, html {
   border-radius: 50%;
   background-color: #05101a;
   overflow: hidden;
+  /* ভেতরের লাইট ইফেক্ট যা আপনার আগের কোডে ব্লক হয়ে গিয়েছিল */
   box-shadow: inset -30px -30px 80px rgba(0, 0, 0, 0.9),
-              inset 20px 20px 70px rgba(82, 187, 204, 0.4);
-  border: 1px solid rgba(82, 187, 204, 0.2);
+              inset 20px 20px 70px rgba(82, 187, 204, 0.5);
+  border: 1px solid rgba(82, 187, 204, 0.25);
   z-index: 3;
 }
 
-/* Moving Map Layer (Using Wikipedia stable asset with glow filters) */
+/* Moving Map Layer (গিটহাবের স্থায়ী ডিরেক্টরি থেকে ১০০% ট্রান্সপারেন্ট ম্যাপ) */
 .map-texture {
   position: absolute;
   width: 200%;
   height: 100%;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Earthmap1000x500compac.jpg/640px-Earthmap1000x500compac.jpg');
+  /* এই ম্যাপের ব্যাকগ্রাউন্ড ট্রান্সপারেন্ট, তাই ভেতরের আলো বাইরে নিখুঁতভাবে ফুটে উঠবে */
+  background-image: url('https://raw.githubusercontent.com/sami21-lgtm/Rotating-Glowing-Earth-/main/world-map-outline.png');
   background-size: 50% 100%;
   background-repeat: repeat-x;
-  opacity: 0.35;
-  filter: brightness(0.65) sepia(1) saturate(2.5) hue-rotate(155deg);
+  opacity: 0.65;
+  filter: drop-shadow(0 0 2px rgba(82, 187, 204, 0.6)) brightness(1.2);
   animation: rotateEarth 20s linear infinite;
 }
 
-/* Sphere Shading Mask Overlay */
+/* Fallback ম্যাপ লিংক (যদি কোনো কারণে উপরের লিংক লোড না হয় তবে এটি ব্যাকআপ হিসেবে কাজ করবে) */
+@css {
+  .map-texture:empty {
+    background-image: url('https://cdn.jsdelivr.net/gh/sami21-lgtm/Rotating-Glowing-Earth-/world-map-outline.png');
+  }
+}
+
+/* Sphere Shading Mask Overlay (Creates 3D depth, light from top-left) */
 .globe::before {
   content: '';
   position: absolute;
@@ -110,7 +119,7 @@ body, html {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, transparent 40%, rgba(5, 12, 20, 0.7) 70%, rgba(3, 6, 10, 0.95) 100%);
+  background: radial-gradient(circle at 35% 35%, transparent 35%, rgba(5, 12, 20, 0.6) 65%, rgba(3, 6, 10, 0.95) 100%);
   z-index: 5;
   pointer-events: none;
 }
@@ -128,7 +137,7 @@ body, html {
 }
 
 .project-footer span {
-  color: #52bbcc; /* আপনার আর্থ গ্লো থিমের সাথে ম্যাচিং নাম */
+  color: #52bbcc;
   font-weight: 600;
 }
 
