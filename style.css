@@ -10,7 +10,7 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #0b131a; /* Dark space background color matching the pic */
+  background-color: #0b131a;
 }
 
 /* Space Container holding everything */
@@ -44,7 +44,7 @@ body, html {
   height: 350px;
   top: 15%;
   left: 20%;
-  background: radial-gradient(circle, rgba(235, 148, 107, 0.3) 0%, rgba(235, 148, 107, 0) 70%);
+  background: radial-gradient(circle, rgba(235, 148, 107, 0.15) 0%, rgba(235, 148, 107, 0) 70%);
   filter: blur(40px);
   pointer-events: none;
   z-index: 1;
@@ -59,6 +59,7 @@ body, html {
   align-items: center;
   justify-content: center;
   z-index: 2;
+  margin-bottom: 40px; /* ফুটারের জন্য স্পেস */
 }
 
 /* Outer Cyan/Blue Atmosphere Glow Layer */
@@ -67,7 +68,6 @@ body, html {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  /* Pic er moto subtle cyan glowing aura shadow */
   box-shadow: 0 0 60px 20px rgba(82, 187, 204, 0.35),
               inset 0 0 50px 10px rgba(82, 187, 204, 0.4);
   pointer-events: none;
@@ -88,20 +88,20 @@ body, html {
   z-index: 3;
 }
 
-/* Moving Map Layer (SVG outline map texture repeated horizontally) */
+/* Moving Map Layer (Using Wikipedia stable asset with glow filters) */
 .map-texture {
   position: absolute;
-  width: 200%; /* Texture repeat support korar jonno double width */
+  width: 200%;
   height: 100%;
-  background-image: url('https://i.ibb.co/6wX0m0L/world-map-outline.png'); /* Accurate high-quality transparent vector outline map */
-  background-size: 50% 100%; /* Perfectly matches the width seamless loop */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Earthmap1000x500compac.jpg/640px-Earthmap1000x500compac.jpg');
+  background-size: 50% 100%;
   background-repeat: repeat-x;
-  opacity: 0.75;
-  filter: drop-shadow(0 0 3px rgba(82, 187, 204, 0.8)); /* Glow effect on the borders */
-  animation: rotateEarth 20s linear infinite; /* Smooth continuous rotation */
+  opacity: 0.35;
+  filter: brightness(0.65) sepia(1) saturate(2.5) hue-rotate(155deg);
+  animation: rotateEarth 20s linear infinite;
 }
 
-/* Sphere Shading Mask Overlay (Creates 3D depth, light from top-left) */
+/* Sphere Shading Mask Overlay */
 .globe::before {
   content: '';
   position: absolute;
@@ -115,12 +115,32 @@ body, html {
   pointer-events: none;
 }
 
+/* Footer Credits Layout */
+.project-footer {
+  position: absolute;
+  bottom: 25px;
+  text-align: center;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.project-footer span {
+  color: #52bbcc; /* আপনার আর্থ গ্লো থিমের সাথে ম্যাচিং নাম */
+  font-weight: 600;
+}
+
+.project-footer .dept {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
 /* CSS Keyframe Animation for Infinite Rotation */
 @keyframes rotateEarth {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); /* Shifts left seamlessly to loop map outline */
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
