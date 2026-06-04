@@ -34,32 +34,35 @@ body {
 }
 
 /* পৃথিবী তৈরির মেইন কোড */
+/* পৃথিবী তৈরির মেইন কোড */
 .earth {
     position: relative;
     width: 400px;
     height: 400px;
     border-radius: 50%;
-    /* একটি হাই-কোয়ালিটি গ্লোবাল ম্যাপ ইমেজ */
-    background: url('https://i.ibb.co/6wG12by/world-map.png'); 
+    
+    /* ছবির মতো শুধু আউটলাইন ম্যাপের লিঙ্ক */
+    background: url('https://i.postimg.co/bNJw349J/world-map-outline.png'); 
     background-size: cover;
+    background-repeat: repeat-x; /* ম্যাপটি যেন অনবরত লুপে ঘুরতে পারে */
     
-    /* থ্রিডি লুক দেওয়ার জন্য শ্যাডো এবং গ্লো ইফেক্ট */
+    /* ঠিক ছবির মতো (image_6b737d.png) নীলচে সায়ান (Cyan) গ্লো ইফেক্ট */
     box-shadow: 
-        inset 20px 0 80px rgba(0, 0, 0, 0.8),    /* ভেতরের অন্ধকারের শ্যাডো */
-        inset -20px 0 80px rgba(255, 255, 255, 0.1), 
-        inset 0 0 50px rgba(74, 186, 211, 0.4),  /* ভেতরের হালকা নীল গ্লো */
-        0 0 60px rgba(74, 186, 211, 0.3);        /* বাইরের গ্লোয়িং ইফেক্ট */
+        inset 30px 0 80px rgba(0, 0, 0, 0.9),     /* একপাশে অন্ধকার বা ছায়া */
+        inset -10px 0 50px rgba(74, 186, 211, 0.3), /* ভেতরের হালকা নীল আলো */
+        inset 0 0 40px rgba(74, 186, 211, 0.6),    
+        0 0 50px rgba(74, 186, 211, 0.5);          /* বাইরের গ্লোয়িং বর্ডার */
     
-    /* অ্যানিমেশন চালু করা */
+    /* অ্যানিমেশন স্পিড (২০ সেকেন্ডে এক পাক ঘুরবে) */
     animation: rotateEarth 20s linear infinite;
 }
 
-/* ম্যাপটি বাম থেকে ডানে ঘোরানোর জন্য অ্যানিমেশন */
+/* ম্যাপ ঘোরানোর অ্যানিমেশন */
 @keyframes rotateEarth {
     0% {
         background-position: 0 0;
     }
     100% {
-        background-position: 800px 0; /* ম্যাপের উইডথ অনুযায়ী রিপিট হবে */
+        background-position: -800px 0; /* বাম দিকে নিখুঁতভাবে ঘুরবে */
     }
 }
