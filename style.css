@@ -44,7 +44,7 @@ body {
     width: 100%;
     height: 100%;
     /* প্রজেক্ট ফোল্ডারে earth-map.jpg নামে ইমেজটি সেভ করে রাখবেন */
-    background-image: url('earth-map.jpg'); 
+    background-image: url('images (1).jpg'); 
     
     /* যদি আপনার লোকাল ইমেজ কাজ না করে, নিচের এই অল্টারনেটিভ CDN লিংকটি ব্যবহার করতে পারেন: */
     /* background-image: url('https://cdn.jsdelivr.net/gh/turban/webgl-earth@master/images/2_no_clouds_4k.jpg'); */
