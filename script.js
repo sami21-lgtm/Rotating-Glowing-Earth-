@@ -1,13 +1,26 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const mapTexture = document.querySelector('.map-texture');
-  const earthWrapper = document.querySelector('.earth-wrapper');
+const earth = document.querySelector('.earth');
+let isPaused = false;
 
-  // Interactive Hover: Slows down on hover for a premium feels
-  earthWrapper.addEventListener('mouseenter', () => {
-    mapTexture.style.animationDuration = '35s';
-  });
+// স্ক্রিনে ক্লিক করলে পৃথিবী থমকে যাবে বা আবার ঘুরবে
+earth.addEventListener('click', () => {
+    if (!isPaused) {
+        earth.style.animationPlayState = 'paused';
+        isPaused = true;
+    } else {
+        earth.style.animationPlayState = 'running';
+        isPaused = false;
+    }
+});
 
-  earthWrapper.addEventListener('mouseleave', () => {
-    mapTexture.style.animationDuration = '20s';
-  });
+// মাউস ওভার করলে ঘূর্ণন কিছুটা দ্রুত হবে (ইন্টারেক্টিভ ইফেক্ট)
+earth.addEventListener('mouseenter', () => {
+    if(!isPaused) {
+        earth.style.animationDuration = '10s'; // স্পিড বাড়িয়ে ১০ সেকেন্ড করা হলো
+    }
+});
+
+earth.addEventListener('mouseleave', () => {
+    if(!isPaused) {
+        earth.style.animationDuration = '20s'; // মাউস সরালে আগের স্বাভাবিক স্পিডে ফিরবে
+    }
 });
