@@ -1,18 +1,18 @@
-const earth = document.getElementById('earth');
+const earthPic = document.getElementById('earth-pic');
 let currentAngle = 0;
 
-// ঘোরার গতি (গতি বাড়াতে চাইলে ০.২ থেকে বাড়িয়ে ০.৫ বা ১ করতে পারেন)
-const speed = 0.2; 
+// ঘোরার স্পিড (ধীরে বা জোরে ঘোরাতে চাইলে ০.১৫ পরিবর্তন করতে পারেন)
+const speed = 0.15; 
 
-function spin() {
+function rotateEarth() {
     currentAngle += speed;
     
-    // ছবিটিকে ক্লকওয়াইজ (ডানে) ঘোরানো হচ্ছে
-    earth.style.transform = `rotate(${currentAngle}deg)`;
+    // শুধু নিচের ইমেজটিকে ঘোরানো হচ্ছে, ওপরের আলোর প্রলেপটি স্থির থাকবে
+    earthPic.style.transform = `rotate(${currentAngle}deg)`;
     
-    // স্মুথ ফ্রেম অ্যানিমেশন
-    requestAnimationFrame(spin);
+    // মাখনের মতো স্মুথ অ্যানিমেশনের জন্য ব্রাউজার ফ্রেম রিকোয়েস্ট
+    requestAnimationFrame(rotateEarth);
 }
 
-// অ্যানিমেশন শুরু করা হলো
-spin();
+// অ্যানিমেশন চালু করা হলো
+rotateEarth();
