@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,43 @@
 <body>
 
     <div class="container">
+        <!-- ব্যাকগ্রাউন্ডের হালকা কমলারঙা আলো -->
         <div class="light-source"></div>
         
-        <div class="earth"></div>
+        <!-- গ্লোয়িং আর্থ কন্টেইনার -->
+        <div class="earth-sphere">
+            <!-- SVG ম্যাপ যা ডানে-বামে লুপ আকারে ঘুরবে -->
+            <div class="map-container">
+                <svg class="world-map" viewBox="0 0 1008 651">
+                    <g fill="none" stroke="#4abad3" stroke-width="1.5" opacity="0.8">
+                        <!-- উত্তর ও দক্ষিণ আমেরিকা (North & South America) -->
+                        <path d="M150,150 Q180,120 250,130 T320,200 T300,300 T260,350 T280,450 T250,550 T220,580 L210,550 T240,400 T210,300 T160,250 Z" />
+                        <path d="M250,350 Q300,380 320,430 T300,500 T280,580 T260,620 L250,600 T240,500 T230,400 Z" />
+                        <!-- আফ্রিকা ও ইউরোপ (Africa & Europe) -->
+                        <path d="M450,180 Q500,150 550,170 T580,220 T520,280 T480,250 Z" id="europe"/>
+                        <path d="M450,260 Q550,250 580,300 T610,380 T560,450 T520,480 T480,430 T420,350 T430,300 Z" />
+                        <!-- এশিয়া ও অস্ট্রেলিয়া (Asia & Australia) -->
+                        <path d="M580,180 Q700,130 850,160 T900,250 T800,350 T700,300 T600,250 Z" />
+                        <path d="M750,450 Q820,430 850,470 T800,550 T730,520 Z" />
+                        <!-- গ্রিনল্যান্ড (Greenland) -->
+                        <path d="M280,50 Q330,40 350,80 T300,120 T250,90 Z" />
+                    </g>
+                </svg>
+                <!-- লুপ ঠিক রাখার জন্য দ্বিতীয় একই ম্যাপ জোড়া দেওয়া হলো -->
+                <svg class="world-map" viewBox="0 0 1008 651">
+                    <g fill="none" stroke="#4abad3" stroke-width="1.5" opacity="0.8">
+                        <path d="M150,150 Q180,120 250,130 T320,200 T300,300 T260,350 T280,450 T250,550 T220,580 L210,550 T240,400 T210,300 T160,250 Z" />
+                        <path d="M250,350 Q300,380 320,430 T300,500 T280,580 T260,620 L250,600 T240,500 T230,400 Z" />
+                        <path d="M450,180 Q500,150 550,170 T580,220 T520,280 T480,250 Z" />
+                        <path d="M450,260 Q550,250 580,300 T610,380 T560,450 T520,480 T480,430 T420,350 T430,300 Z" />
+                        <path d="M580,180 Q700,130 850,160 T900,250 T800,350 T700,300 T600,250 Z" />
+                        <path d="M750,450 Q820,430 850,470 T800,550 T730,520 Z" />
+                        <path d="M280,50 Q330,40 350,80 T300,120 T250,90 Z" />
+                    </g>
+                </svg>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
