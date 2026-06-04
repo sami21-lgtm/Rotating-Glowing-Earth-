@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #000000; /* একদম কালো ব্যাকগ্রাউন্ড যাতে ছবির চারপাশের কালো বর্ডার মিশে যায় */
+    background: #000000; /* স্পেসের নিখাদ কালো ব্যাকগ্রাউন্ড */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,15 +13,42 @@ body {
     overflow: hidden;
 }
 
-.space {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* পৃথিবীকে ধরে রাখার মূল বৃত্তাকার ফ্রেম */
+.earth-container {
+    position: relative;
+    width: 360px; /* আপনার স্ক্রিন অনুযায়ী সাইজ ছোট-বড় করতে পারেন */
+    height: 360px;
+    border-radius: 50%;
+    overflow: hidden; /* ভেতরের আলো যেন গোল সীমানার বাইরে না যায় */
 }
 
+/* আপনার আসল ইমেজটি */
 .earth-img {
-    width: 350px; /* আপনার স্ক্রিনের সাইজ অনুযায়ী এটি ছোট বা বড় করতে পারেন */
-    height: auto;
-    border-radius: 50%; /* ছবিটিকে নিখুঁত গোল রাখার জন্য */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
     display: block;
+}
+
+/* পৃথিবীর ওপর সূর্যের আলোর প্রলেপ */
+.sunlight-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* ওপরের ডানদিকের কোণা (80% 20%) থেকে আসা উজ্জ্বল সোনালী রোদের আবহ */
+    background: radial-gradient(circle at 80% 20%, 
+        rgba(255, 255, 240, 1) 0%, 
+        rgba(255, 190, 100, 0.5) 30%, 
+        rgba(255, 140, 40, 0.15) 55%, 
+        transparent 75%);
+    
+    pointer-events: none; /* মাউস ক্লিকে যেন বাধা না দেয় */
+    z-index: 2; /* এটি ইমেজের ওপরে থাকবে */
+    
+    /* এই ব্লেন্ড মোডের কারণে আলোটি নিচের ছবির মহাদেশ ও মেঘের সাথে নিখুঁতভাবে মিশে যাবে */
+    mix-blend-mode: screen; 
 }
