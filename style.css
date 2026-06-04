@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #020208; /* মহাকাশের অন্ধকার ব্যাকগ্রাউন্ড */
+    background: #000000; /* একদম কালো ব্যাকগ্রাউন্ড যাতে ছবির চারপাশের কালো বর্ডার মিশে যায় */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,58 +13,15 @@ body {
     overflow: hidden;
 }
 
-/* স্পেস কন্টেইনার */
 .space {
-    position: relative;
-    width: 450px;
-    height: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* পৃথিবীর ওপরের ত্রিমাত্রিক ছায়া ও বায়ুমণ্ডল */
-.earth-shadow {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden; /* ভেতরের ম্যাপ যেন গোলকের বাইরে না যায় */
-    
-    /* ইনসেট শ্যাডো দিয়ে গোলকের থ্রিডি লুক এবং বায়ুমণ্ডলের হালকা নীল গ্লো তৈরি */
-    box-shadow: 
-        inset -50px -50px 70px rgba(0, 0, 0, 0.98), 
-        inset 20px 20px 40px rgba(255, 255, 255, 0.3), 
-        0 0 35px rgba(70, 135, 185, 0.45);
-    z-index: 1;
-}
-
-/* ভেতরের ঘূর্ণায়মান বাঁকা ম্যাপ */
-.earth-map {
-    width: 100%;
-    height: 100%;
-    /* প্রজেক্ট ফোল্ডারে earth-map.jpg নামে ইমেজটি সেভ করে রাখবেন */
-    background-image: url('images (1).jpg'); 
-    
-    /* যদি আপনার লোকাল ইমেজ কাজ না করে, নিচের এই অল্টারনেটিভ CDN লিংকটি ব্যবহার করতে পারেন: */
-    /* background-image: url('https://cdn.jsdelivr.net/gh/turban/webgl-earth@master/images/2_no_clouds_4k.jpg'); */
-    
-    background-size: auto 100%;
-    background-repeat: repeat-x;
-    
-    /* ২৩.৫ ডিগ্রি অক্ষীয় হেলন (Axial Tilt) এবং জুম অ্যাডজাস্টমেন্ট */
-    transform: rotate(23.5deg) scale(1.4); 
-}
-
-/* সূর্যালোক (Sunlight Flare) */
-.sunlight {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 420px;
-    height: 420px;
-    /* ডানদিকের কোণ থেকে আসা তীব্র রোদের ইফেক্ট */
-    background: radial-gradient(circle, rgba(255,255,245,0.95) 0%, rgba(255,190,90,0.35) 40%, transparent 65%);
-    pointer-events: none;
-    z-index: 2; /* এটি পৃথিবীর সামনে আলোর ঝলকানি দেবে */
+.earth-img {
+    width: 350px; /* আপনার স্ক্রিনের সাইজ অনুযায়ী এটি ছোট বা বড় করতে পারেন */
+    height: auto;
+    border-radius: 50%; /* ছবিটিকে নিখুঁত গোল রাখার জন্য */
+    display: block;
 }
