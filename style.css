@@ -9,47 +9,106 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #000; /* মহাকাশের কালো রঙ */
+    background: #051117; /* ছবির হুবহু ব্যাকগ্রাউন্ড ডার্ক কালার */
     overflow: hidden;
 }
 
-/* মহাকাশের একটা হালকা গ্লো ইফেক্ট */
-.space-background {
+.earth-container {
     position: relative;
-    width: 100%;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at center, #0a1526 0%, #000000 100%);
+    width: 550px;
+    height: 550px;
 }
 
-/* রিয়েল থ্রিডি গ্লোব */
-.real-earth {
-    width: 400px;
-    height: 400px;
+/* ছবির বাম-উপরের নেবুলা গ্লো ইফেক্ট */
+.nebula-glow {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(220, 130, 85, 0.18) 0%, rgba(0,0,0,0) 65%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* মূল গ্লোয়িং গ্লোব বডি */
+.earth-sphere {
+    position: relative;
+    width: 360px;
+    height: 360px;
     border-radius: 50%;
+    background: #041015;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(74, 186, 211, 0.3);
     
-    /* আসল পৃথিবীর স্যাটেলাইট ম্যাপ (এটি গিটহাবে ব্লক হবে না) */
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Land_ocean_ice_2048.jpg/1024px-Land_ocean_ice_2048.jpg');
-    background-size: 200% 100%; 
-    
-    /* থ্রিডি লুক: একপাশে সূর্যের আলো, অন্যপাশে রাতের অন্ধকার */
+    /* ছবির মতো নিখুঁত সায়ান/নীল রঙের বায়ুমণ্ডলীয় গ্লো */
     box-shadow: 
-        inset -50px -20px 80px rgba(0, 0, 0, 0.95), /* রাতের অন্ধকার ছায়া */
-        inset 10px 10px 30px rgba(255, 255, 255, 0.4), /* সূর্যের আলোর রিফ্লেকশন */
-        0 0 40px rgba(100, 160, 255, 0.3); /* পৃথিবীর বাইরের বায়ুমণ্ডলের হালকা নীল গ্লো */
-    
-    /* ঘোরানোর অ্যানিমেশন */
-    animation: spinEarth 25s linear infinite;
+        0 0 50px rgba(74, 186, 211, 0.4), 
+        inset 0 0 40px rgba(74, 186, 211, 0.3);
+    z-index: 2;
 }
 
-/* পৃথিবী ঘোরার অ্যানিমেশন */
-@keyframes spinEarth {
-    0% { 
-        background-position: 0 0; 
+/* অক্ষরেখা */
+.globe-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* ম্যাপ মুভমেন্টের ট্র্যাক */
+.map-track {
+    display: flex;
+    width: 200%;
+    height: 85%;
+    animation: rotateEarth 20s linear infinite;
+    z-index: 3;
+}
+
+.world-svg {
+    width: 50%;
+    height: 100%;
+}
+
+/* থ্রিডি শ্যাডো: বামে আলো এবং ডানে বাস্তবসম্মত রাত/অন্ধকার তৈরি করে */
+.sphere-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, transparent 40%, rgba(0,0,0,0.85) 75%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* পৃথিবীর চারপাশের কক্ষপথের রিং */
+.orbital-ring {
+    position: absolute;
+    width: 480px;
+    height: 180px;
+    border-top: 1.5px solid rgba(74, 186, 211, 0.25);
+    border-bottom: 1px solid rgba(74, 186, 211, 0.05);
+    border-radius: 50%;
+    transform: rotate(-22deg); /* ছবির মতো বাঁকা পজিশন */
+    pointer-events: none;
+    z-index: 6;
+}
+
+/* পৃথিবী ঘোরার আসল অ্যানিমেশন */
+@keyframes rotateEarth {
+    0% {
+        transform: translateX(0);
     }
-    100% { 
-        background-position: -200% 0; /* নিখুঁতভাবে লুপ হয়ে ঘুরতে থাকবে */
+    100% {
+        transform: translateX(-50%); /* ম্যাপটি বামে মসৃণভাবে লুপ হয়ে ঘুরবে */
     }
 }
