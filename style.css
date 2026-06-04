@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #020208; /* মহাকাশের অন্ধকার ব্যাকগ্রাউন্ড */
+    background: #020208;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,6 @@ body {
     overflow: hidden;
 }
 
-/* স্পেস কন্টেইনার */
 .space {
     position: relative;
     width: 400px;
@@ -23,33 +22,42 @@ body {
     align-items: center;
 }
 
-/* ঘূর্ণায়মান পৃথিবী */
-.earth {
+/* পৃথিবীর ওপরের ত্রিমাত্রিক ছায়া ও বায়ুমণ্ডল */
+.earth-shadow {
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    /* একটি ফ্ল্যাট আর্থ ম্যাপ টেক্সচার */
+    position: relative;
+    overflow: hidden; /* ভেতরের ম্যাপ যেন গোলকের বাইরে না যায় */
+    
+    /* থ্রিডি লুক দেওয়ার জন্য শ্যাডো (এটি সোজা থাকবে যাতে সূর্যের আলো ঠিক থাকে) */
+    box-shadow: 
+        inset -40px -40px 60px rgba(0, 0, 0, 0.95), 
+        inset 20px 20px 30px rgba(255, 255, 255, 0.25), 
+        0 0 30px rgba(70, 130, 180, 0.4);
+    z-index: 1;
+}
+
+/* ভেতরের ঘূর্ণায়মান বাঁকা ম্যাপ */
+.earth-map {
+    width: 100%;
+    height: 100%;
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Earthmap1000x500compac.jpg');
     background-size: auto 100%;
     background-repeat: repeat-x;
-    position: relative;
     
-    /* ইনসেট শ্যাডো দিয়ে 3D গোলকের লুক দেওয়া এবং বায়ুমণ্ডলের গ্লো তৈরি করা */
-    box-shadow: 
-        inset -40px -40px 60px rgba(0, 0, 0, 0.95), /* অন্ধকারের দিকের ম্লান ছায়া */
-        inset 20px 20px 30px rgba(255, 255, 255, 0.25), /* আলোর দিকের হাইলাইট */
-        0 0 30px rgba(70, 130, 180, 0.4); /* পৃথিবীর চারপাশের হালকা নীল বায়ুমণ্ডল */
+    /* ২৩.৫ ডিগ্রি অক্ষীয় হেলন এবং কোণা যেন কেটে না যায় তাই একটু বড় (scale) করা হলো */
+    transform: rotate(23.5deg) scale(1.4); 
 }
 
 /* সূর্যালোক (Sunlight Flare) */
 .sunlight {
     position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 350px;
-    height: 350px;
-    /* রেডিয়াল গ্রেডিয়েন্ট দিয়ে রোদের তীব্রতা তৈরি */
-    background: radial-gradient(circle, rgba(255,255,240,0.9) 0%, rgba(255,180,80,0.3) 40%, transparent 70%);
-    pointer-events: none; /* যাতে মাউস ক্লিকে সমস্যা না করে */
-    z-index: 2; /* পৃথিবীর সামনে থাকবে আলোর ঝলকানি */
+    top: -40px;
+    right: -40px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(255,255,240,0.9) 0%, rgba(255,180,80,0.3) 45%, transparent 70%);
+    pointer-events: none;
+    z-index: 2; /* এটি পৃথিবীর সামনে আলোর ঝলকানি দেবে */
 }
