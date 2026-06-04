@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #03131a; /* ডার্ক ব্যাকগ্রাউন্ড */
+    background: #041015; /* ছবির মতো হুবহু ব্যাকগ্রাউন্ড কালার */
     overflow: hidden;
 }
 
@@ -22,47 +22,57 @@ body {
     height: 100vh;
 }
 
-/* ছবির বাম-উপরের দিকের হালকা কমলারঙা লাইট ইফেক্ট */
+/* ছবির বাম-উপরের হালকা কমলারঙা গ্লো (Sunlight Effect) */
 .light-source {
     position: absolute;
-    top: 15%;
-    left: 30%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(235, 144, 96, 0.2) 0%, rgba(0,0,0,0) 70%);
+    top: 10%;
+    left: 25%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(235, 144, 96, 0.18) 0%, rgba(0,0,0,0) 70%);
     pointer-events: none;
 }
 
-/* পৃথিবী তৈরির মেইন কোড */
-/* পৃথিবী তৈরির মেইন কোড */
-.earth {
+/* মূল গোলাকার পৃথিবী */
+.earth-sphere {
     position: relative;
     width: 400px;
     height: 400px;
     border-radius: 50%;
+    background: #041218; /* পৃথিবীর ভেতরের অন্ধকার অংশ */
+    overflow: hidden; /* ভেতরের ম্যাপ যেন গোলকের বাইরে না যায় */
     
-    /* ছবির মতো শুধু আউটলাইন ম্যাপের লিঙ্ক */
-    background: url('https://i.postimg.co/bNJw349J/world-map-outline.png'); 
-    background-size: cover;
-    background-repeat: repeat-x; /* ম্যাপটি যেন অনবরত লুপে ঘুরতে পারে */
-    
-    /* ঠিক ছবির মতো (image_6b737d.png) নীলচে সায়ান (Cyan) গ্লো ইফেক্ট */
+    /* ছবির মতো নিখুঁত সায়ান/নীল গ্লোয়িং বর্ডার এবং শ্যাডো */
     box-shadow: 
-        inset 30px 0 80px rgba(0, 0, 0, 0.9),     /* একপাশে অন্ধকার বা ছায়া */
-        inset -10px 0 50px rgba(74, 186, 211, 0.3), /* ভেতরের হালকা নীল আলো */
-        inset 0 0 40px rgba(74, 186, 211, 0.6),    
-        0 0 50px rgba(74, 186, 211, 0.5);          /* বাইরের গ্লোয়িং বর্ডার */
+        inset 40px 0 100px rgba(0, 0, 0, 0.92), 
+        inset -20px 0 60px rgba(74, 186, 211, 0.25),
+        inset 0 0 50px rgba(74, 186, 211, 0.5),    
+        0 0 60px rgba(74, 186, 211, 0.45);
     
-    /* অ্যানিমেশন স্পিড (২০ সেকেন্ডে এক পাক ঘুরবে) */
-    animation: rotateEarth 20s linear infinite;
+    display: flex;
+    align-items: center;
 }
 
-/* ম্যাপ ঘোরানোর অ্যানিমেশন */
+/* ম্যাপ কন্টেইনার যা অ্যানিমেট হবে */
+.map-container {
+    display: flex;
+    width: 200%; /* দুইটা ম্যাপ পাশাপাশি রাখার জন্য */
+    height: 90%;
+    position: opacity;
+    animation: rotateEarth 18s linear infinite;
+}
+
+.world-map {
+    width: 50%; /* প্রতিটি SVG ম্যাপ সমান জায়গা নেবে */
+    height: 100%;
+}
+
+/* পৃথিবী ঘোরার আসল ম্যাজিক অ্যানিমেশন */
 @keyframes rotateEarth {
     0% {
-        background-position: 0 0;
+        transform: translateX(0);
     }
     100% {
-        background-position: -800px 0; /* বাম দিকে নিখুঁতভাবে ঘুরবে */
+        transform: translateX(-50%); /* ম্যাপটি বামে সরবে এবং লুপ তৈরি করবে */
     }
 }
