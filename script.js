@@ -1,17 +1,18 @@
 const earth = document.getElementById('earth');
-let positionX = 0;
+let currentAngle = 0;
 
-// গতি নিয়ন্ত্রণ করার ভ্যারিয়েবল (কমাতে বা বাড়াতে পারেন)
-const speed = 0.4; 
+// ঘোরার গতি (গতি বাড়াতে চাইলে ০.২ থেকে বাড়িয়ে ০.৫ বা ১ করতে পারেন)
+const speed = 0.2; 
 
-function rotate() {
-    // ব্যাকগ্রাউন্ড ইমেজকে প্রতিনিয়ত বামে সরিয়ে ঘূর্ণন তৈরি করা হচ্ছে
-    positionX -= speed;
-    earth.style.backgroundPositionX = positionX + 'px';
+function spin() {
+    currentAngle += speed;
     
-    // ব্রাউজারের রিফ্রেশ রেটের সাথে সামঞ্জস্য রেখে স্মুথ অ্যানিমেশন
-    requestAnimationFrame(rotate);
+    // ছবিটিকে ক্লকওয়াইজ (ডানে) ঘোরানো হচ্ছে
+    earth.style.transform = `rotate(${currentAngle}deg)`;
+    
+    // স্মুথ ফ্রেম অ্যানিমেশন
+    requestAnimationFrame(spin);
 }
 
-// অ্যানিমেশন শুরু করার জন্য ফাংশনটি কল করা হলো
-rotate();
+// অ্যানিমেশন শুরু করা হলো
+spin();
