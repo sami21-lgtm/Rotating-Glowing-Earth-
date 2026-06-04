@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #000000; /* স্পেসের নিখাদ কালো ব্যাকগ্রাউন্ড */
+    background: #000; /* একদম কুচকুচে কালো মহাকাশ */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,42 +13,40 @@ body {
     overflow: hidden;
 }
 
-/* পৃথিবীকে ধরে রাখার মূল বৃত্তাকার ফ্রেম */
-.earth-container {
+.earth-wrapper {
     position: relative;
-    width: 360px; /* আপনার স্ক্রিন অনুযায়ী সাইজ ছোট-বড় করতে পারেন */
-    height: 360px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
-    overflow: hidden; /* ভেতরের আলো যেন গোল সীমানার বাইরে না যায় */
+    /* ছবির চারপাশের অতিরিক্ত অংশ যেন না দেখা যায় */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1); 
 }
 
-/* আপনার আসল ইমেজটি */
-.earth-img {
+.earth-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     border-radius: 50%;
     display: block;
+    object-fit: cover;
 }
 
-/* পৃথিবীর ওপর সূর্যের আলোর প্রলেপ */
-.sunlight-overlay {
+/* সূর্যের আলোর প্রলেপ */
+.sun-glow {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
     
-    /* ওপরের ডানদিকের কোণা (80% 20%) থেকে আসা উজ্জ্বল সোনালী রোদের আবহ */
-    background: radial-gradient(circle at 80% 20%, 
-        rgba(255, 255, 240, 1) 0%, 
-        rgba(255, 190, 100, 0.5) 30%, 
-        rgba(255, 140, 40, 0.15) 55%, 
-        transparent 75%);
+    /* ওপরের ডানপাশ থেকে আসা হালকা সোনালী রোদ */
+    background: radial-gradient(circle at 75% 25%, 
+                rgba(255, 255, 220, 0.6) 0%, 
+                rgba(255, 200, 100, 0.2) 40%, 
+                transparent 70%);
     
-    pointer-events: none; /* মাউস ক্লিকে যেন বাধা না দেয় */
-    z-index: 2; /* এটি ইমেজের ওপরে থাকবে */
-    
-    /* এই ব্লেন্ড মোডের কারণে আলোটি নিচের ছবির মহাদেশ ও মেঘের সাথে নিখুঁতভাবে মিশে যাবে */
-    mix-blend-mode: screen; 
+    /* এটি ছবিটির সাথে রোদকে ব্লেন্ড করে দেবে */
+    mix-blend-mode: soft-light; 
+    z-index: 10;
 }
