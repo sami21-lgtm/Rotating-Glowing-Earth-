@@ -5,15 +5,16 @@
 }
 
 body {
-    background-color: #000; /* মহাকাশের গভীর কালো ব্যাকগ্রাউন্ড */
+    background: #020208; /* মহাকাশের অন্ধকার ব্যাকগ্রাউন্ড */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     overflow: hidden;
 }
 
-.earth-container {
+/* স্পেস কন্টেইনার */
+.space {
     position: relative;
     width: 400px;
     height: 400px;
@@ -22,37 +23,33 @@ body {
     align-items: center;
 }
 
-/* ৩ডি গ্লোব স্টাইলিং */
-.earth-globe {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; /* একদম নিখুঁত গোল আকার */
-    
-    /* আপনার আপলোড করা ইমেজটি সরাসরি লিঙ্ক করা হলো */
-    background-image: url('images (1).jpg');
-    
-    /* সাইজ একটু বাড়িয়ে দেওয়া হয়েছে যাতে ইমেজের নিজস্ব কালো বর্ডার স্ক্রিনে না আসে */
-    background-size: 185% 100%; 
+/* ঘূর্ণায়মান পৃথিবী */
+.earth {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    /* একটি ফ্ল্যাট আর্থ ম্যাপ টেক্সচার */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Earthmap1000x500compac.jpg');
+    background-size: auto 100%;
     background-repeat: repeat-x;
-    background-position: center;
+    position: relative;
     
-    /* বাস্তবসম্মত ৩ডি ইফেক্ট (ডানপাশে রাত/ছায়া এবং চারপাশের বায়ুমণ্ডলের নীল আভা) */
+    /* ইনসেট শ্যাডো দিয়ে 3D গোলকের লুক দেওয়া এবং বায়ুমণ্ডলের গ্লো তৈরি করা */
     box-shadow: 
-        inset -50px -20px 80px rgba(0, 0, 0, 0.95),   /* ডানপাশের নিখুঁত অন্ধকার অংশ */
-        inset 15px 15px 40px rgba(255, 255, 255, 0.15), /* বামপাশের হালকা সূর্যের আলো */
-        0 0 30px rgba(100, 160, 255, 0.4),            /* বায়ুমণ্ডলের গ্লো */
-        0 0 10px rgba(100, 160, 255, 0.1);
-    
-    /* পৃথিবী ঘোরার মসৃণ অ্যানিমেশন */
-    animation: spinGlobe 30s linear infinite;
+        inset -40px -40px 60px rgba(0, 0, 0, 0.95), /* অন্ধকারের দিকের ম্লান ছায়া */
+        inset 20px 20px 30px rgba(255, 255, 255, 0.25), /* আলোর দিকের হাইলাইট */
+        0 0 30px rgba(70, 130, 180, 0.4); /* পৃথিবীর চারপাশের হালকা নীল বায়ুমণ্ডল */
 }
 
-/* গ্লোব ঘোরার আসল অ্যানিমেশন */
-@keyframes spinGlobe {
-    0% {
-        background-position: 0% center;
-    }
-    100% {
-        background-position: -185% center; /* ছবিটিকে অনুভূমিকভাবে লুপে ঘুরাবে */
-    }
+/* সূর্যালোক (Sunlight Flare) */
+.sunlight {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 350px;
+    height: 350px;
+    /* রেডিয়াল গ্রেডিয়েন্ট দিয়ে রোদের তীব্রতা তৈরি */
+    background: radial-gradient(circle, rgba(255,255,240,0.9) 0%, rgba(255,180,80,0.3) 40%, transparent 70%);
+    pointer-events: none; /* যাতে মাউস ক্লিকে সমস্যা না করে */
+    z-index: 2; /* পৃথিবীর সামনে থাকবে আলোর ঝলকানি */
 }
