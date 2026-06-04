@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #020208;
+    background: #020208; /* মহাকাশের অন্ধকার ব্যাকগ্রাউন্ড */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,10 +13,11 @@ body {
     overflow: hidden;
 }
 
+/* স্পেস কন্টেইনার */
 .space {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,11 +31,11 @@ body {
     position: relative;
     overflow: hidden; /* ভেতরের ম্যাপ যেন গোলকের বাইরে না যায় */
     
-    /* থ্রিডি লুক দেওয়ার জন্য শ্যাডো (এটি সোজা থাকবে যাতে সূর্যের আলো ঠিক থাকে) */
+    /* ইনসেট শ্যাডো দিয়ে গোলকের থ্রিডি লুক এবং বায়ুমণ্ডলের হালকা নীল গ্লো তৈরি */
     box-shadow: 
-        inset -40px -40px 60px rgba(0, 0, 0, 0.95), 
-        inset 20px 20px 30px rgba(255, 255, 255, 0.25), 
-        0 0 30px rgba(70, 130, 180, 0.4);
+        inset -50px -50px 70px rgba(0, 0, 0, 0.98), 
+        inset 20px 20px 40px rgba(255, 255, 255, 0.3), 
+        0 0 35px rgba(70, 135, 185, 0.45);
     z-index: 1;
 }
 
@@ -42,22 +43,28 @@ body {
 .earth-map {
     width: 100%;
     height: 100%;
-    background-image: url('images (1).jpg');
+    /* প্রজেক্ট ফোল্ডারে earth-map.jpg নামে ইমেজটি সেভ করে রাখবেন */
+    background-image: url('earth-map.jpg'); 
+    
+    /* যদি আপনার লোকাল ইমেজ কাজ না করে, নিচের এই অল্টারনেটিভ CDN লিংকটি ব্যবহার করতে পারেন: */
+    /* background-image: url('https://cdn.jsdelivr.net/gh/turban/webgl-earth@master/images/2_no_clouds_4k.jpg'); */
+    
     background-size: auto 100%;
     background-repeat: repeat-x;
     
-    /* ২৩.৫ ডিগ্রি অক্ষীয় হেলন এবং কোণা যেন কেটে না যায় তাই একটু বড় (scale) করা হলো */
+    /* ২৩.৫ ডিগ্রি অক্ষীয় হেলন (Axial Tilt) এবং জুম অ্যাডজাস্টমেন্ট */
     transform: rotate(23.5deg) scale(1.4); 
 }
 
 /* সূর্যালোক (Sunlight Flare) */
 .sunlight {
     position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 380px;
-    height: 380px;
-    background: radial-gradient(circle, rgba(255,255,240,0.9) 0%, rgba(255,180,80,0.3) 45%, transparent 70%);
+    top: 5px;
+    right: 5px;
+    width: 420px;
+    height: 420px;
+    /* ডানদিকের কোণ থেকে আসা তীব্র রোদের ইফেক্ট */
+    background: radial-gradient(circle, rgba(255,255,245,0.95) 0%, rgba(255,190,90,0.35) 40%, transparent 65%);
     pointer-events: none;
     z-index: 2; /* এটি পৃথিবীর সামনে আলোর ঝলকানি দেবে */
 }
